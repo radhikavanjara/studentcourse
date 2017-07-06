@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Delete Record</title>
+
+<style>
+body {background-color: #fff2e6;}
+
+h2 {
+    color: #00264d;
+}
+input[type=submit] {
+    background-color: #00264d;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;    
+    font-size: 17px;}
+
+    form {
+    display: inline-block;
+    text-align: center;
+    }
+
+
+</style>
+
+</head>
+
+<body>
+<?php
+$servername = "radhika.com";
+$username = "root";
+$password = "gurudev1995";
+$database = "Student";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}else
+
+$sql = "DELETE FROM StudentInfo where FirstName = '".$_GET["FirstName"]."' AND email = '".$_GET["email"]."';"; 
+
+if(mysqli_query($conn, $sql)){
+    echo "<h2/align = 'center'>Record Deleted.</h2>";
+} 
+else{
+    echo "ERROR: Could not execute $sql. " . mysqli_error($link);
+}
+?>
+
+<div align='center'>
+<form action='Student.php'>
+<input type="submit" value="BACK">
+</form>
+</div>
+
